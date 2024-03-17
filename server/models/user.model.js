@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 // Declare the Schema of the Mongo model
-var userSchema = new mongoose.Schema(
+var UserSchema = new mongoose.Schema(
   {
     firstName: {
       type: String,
@@ -15,21 +15,22 @@ var userSchema = new mongoose.Schema(
       min: 2,
       max: 50,
     },
-    friends: {
-      type: Array, // Reference
-      default: [],
-    },
     email: {
       type: String,
       required: true,
-      max:50,
+      max: 50,
       unique: true,
     },
     password: {
       type: String,
       required: true,
-      min:5,
+      min: 5,
     },
+    friends: {
+      type: Array, // Reference
+      default: [],
+    },
+
     picturePath: {
       type: String,
       default: "",
@@ -52,4 +53,4 @@ var userSchema = new mongoose.Schema(
 );
 
 //Export the model
-export const User = mongoose.model("User", userSchema);
+export const User = mongoose.model("User", UserSchema);
