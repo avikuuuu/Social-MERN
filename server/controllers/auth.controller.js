@@ -56,3 +56,29 @@ export const Register = AsyncHandler(async (req, res) => {
     .status(201)
     .json(new ApiResponse(200, createdUser, "user Created sucessfully"));
 });
+
+export const login = AsyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email && !password) {
+    throw new ApiError(400, "Please provide an email and a password");
+  }
+  const vaildUser = await User.findOne({ email });
+
+  if (!vaildUser) {
+    throw new ApiError(404, "User does not exist");
+  }
+
+  const isPasswordValid = bcrypt.compare(password, vaildUser.password);
+
+  if (!isPasswordValid) {
+    throw new ApiError(401, "Invalid Password");
+  }
+
+  const token = jwt.sign({ id: vaildUser._id }, process.env.JWT_SECERT);
+  const { password:pass, ...rest } = vaildUser._doc;
+  return res
+    .cookie("access_token", token, { httpOnly: true })
+    .status(200)
+    .json(new ApiResponse(200, rest, "login Succesfully"));
+});
