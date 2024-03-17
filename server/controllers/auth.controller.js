@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { User } from "../models/user.model.js";
