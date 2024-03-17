@@ -6,6 +6,7 @@ import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
 
+
 // CONFIGRATIONS
 
 const __filename = fileURLToPath(import.meta.url);
@@ -22,11 +23,13 @@ app.use("assets", express.static(path.join(__dirname, "public/assets")));
 
 // Routes Imports
 import authRouter from './routes/auth.route.js'
+import userRouter from './routes/user.route.js'
 
 
 
-// ROuter configs
+// Router configs
 app.use('/api/v1/auth',authRouter)
+app.use('/api/v1/users',userRouter)
 
 
 
