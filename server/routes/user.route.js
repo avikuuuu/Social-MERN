@@ -4,9 +4,9 @@ import { getUser, getUserFriends, addRemoveFriend } from "../controllers/user.co
 
 const router = Router();
 
-router.route("/:id").post(verifyToken, getUser);
-router.route("/:id/friends").post(verifyToken, getUserFriends);
-router.route("/:id/:friendId").post(verifyToken, addRemoveFriend);
+router.route("/:id").get(verifyToken, getUser);
+router.route("/:id/friends").get(verifyToken, getUserFriends);
+router.route("/:id/:friendId").patch(verifyToken, addRemoveFriend);
 
 
 export default router;

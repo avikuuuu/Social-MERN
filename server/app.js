@@ -24,12 +24,14 @@ app.use("assets", express.static(path.join(__dirname, "public/assets")));
 // Routes Imports
 import authRouter from './routes/auth.route.js'
 import userRouter from './routes/user.route.js'
+import postRouter from './routes/post.route.js'
 
 
 
 // Router configs
 app.use('/api/v1/auth',authRouter)
 app.use('/api/v1/users',userRouter)
+app.use('api/v1/posts',postRouter)
 
 
 
