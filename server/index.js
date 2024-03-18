@@ -16,6 +16,8 @@ ConnectDB()
     app.listen(port, () => {
       console.log(`Server is running on port: ${"http://localhost:" + port}`);
     });
+    //data insertion
+    
     // User.insertMany(users);
     // Post.insertMany(posts);
   }
