@@ -42,5 +42,5 @@ const userSlice = createSlice({
 });
 
 
-export const { setMode, setLogin, logout, setFriends, setPosts, setPost } = userSlice.actions;
+export const { setMode, setLogin, setLogout, setFriends, setPosts, setPost } = userSlice.actions;
 export default userSlice.reducer;
